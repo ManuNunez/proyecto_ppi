@@ -15,7 +15,7 @@ public class InsuredService {
 
     public Insured saveInsured(Insured insured){
         String SearchName = insured.getName();
-        if (repository.FindInsuredByName(SearchName).isEmpty()) {
+        if (repository.findInsuredByName(SearchName).isEmpty()) {
             return repository.save(insured);
         }
         else {
@@ -26,7 +26,10 @@ public class InsuredService {
     }
     public ArrayList<Insured> getAllInsureds(){
         return(ArrayList<Insured>) repository.findAll();
-        
-    }
 
+    }
+    public Optional<ArrayList<Insured>> findInsuredByName (String SearchName){
+        return repository.findInsuredByName(SearchName);
+    }
+    
 }
