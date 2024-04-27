@@ -28,6 +28,12 @@ public class Policy {
     public void setId(Long ID) {
         this.id = ID;
     }
+    public String getPolicyNumber() {
+        return policyNumber;
+    }
+    public void setPolicyNumber(String policyNumber) {
+        this.policyNumber = policyNumber;
+    }
     public Insured getInsured() {
         return insured;
     }

@@ -10,9 +10,9 @@ import java.util.Optional;
 
 @Repository
 public interface PolicyRepository extends CrudRepository <Policy, Long>{
-    public Optional<Policy> FindPolicyByPolicyNumber(String policyNumber);
-    public Optional<ArrayList<Policy>> FindPolicyByInsured(Insured insured);
-    public Optional<Policy> FindPolicyById(Long id);
+    public Optional<Policy> findPolicyByPolicyNumber(String policyNumber);
+    public Optional<ArrayList<Policy>> findPolicyByInsured(Insured insured);
+    public Optional<Policy> findPolicyById(Long id);
 
 
 }
