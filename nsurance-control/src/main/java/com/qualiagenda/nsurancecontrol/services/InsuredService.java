@@ -24,5 +24,9 @@ public class InsuredService {
             return insured2;
         }
     }
-    
+    public ArrayList<Insured> getAllInsureds(){
+        return(ArrayList<Insured>) repository.findAll();
+        
+    }
+
 }
