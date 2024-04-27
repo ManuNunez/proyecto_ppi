@@ -13,6 +13,16 @@ public class InsuredService {
     @Autowired
     InsuredRepository repository;
 
+    public Insured saveInsured(Insured insured){
+        String SearchName = insured.getName();
+        if (repository.FindInsuredByName(SearchName).isEmpty()) {
+            return repository.save(insured);
+        }
+        else {
+            Insured insured2 = new Insured();
+            insured2.setID(-1L);
+            return insured2;
+        }
+    }
     
-
 }
