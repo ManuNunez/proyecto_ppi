@@ -34,7 +34,16 @@ public class InsuredService {
     public Optional<Insured> findInsuredByID(Long SearchID){
         return repository.findInsuredById(SearchID);
     }
-    
+    public String deleteInsuredById(Long ID){
+        if (findInsuredByID(ID).isPresent()){
+            repository.deleteById(ID);
+            return"Insured deleted successfully";
+        }
+        else{
+            return "Insured not found";
+        }
+    }
+
     /* 
     Public Insured editInsured(Insured insured){
         return repository.save(insured);
