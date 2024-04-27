@@ -43,10 +43,9 @@ public class InsuredService {
             return "Insured not found";
         }
     }
-
-    /* 
-    Public Insured editInsured(Insured insured){
+    public Insured editInsured(Insured insured){
         return repository.save(insured);
     }
-    */
+    
+
 }
