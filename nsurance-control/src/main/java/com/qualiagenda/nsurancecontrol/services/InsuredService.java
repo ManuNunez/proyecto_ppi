@@ -31,5 +31,13 @@ public class InsuredService {
     public Optional<ArrayList<Insured>> findInsuredByName (String SearchName){
         return repository.findInsuredByName(SearchName);
     }
+    public Optional<Insured> findInsuredByID(Long SearchID){
+        return repository.findInsuredById(SearchID);
+    }
     
+    /* 
+    Public Insured editInsured(Insured insured){
+        return repository.save(insured);
+    }
+    */
 }

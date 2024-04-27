@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface InsuredRepository extends CrudRepository<Insured, Long>{
     public Optional<ArrayList<Insured>> findInsuredByName(String name);
+    public Optional<Insured> findInsuredById(Long id);
 }
