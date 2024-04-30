@@ -46,8 +46,5 @@ public class InsuredController {
     public String deleteInsuredById(@RequestParam Long id) {
         return service.deleteInsuredById(id);
     }
-    
-    
-    
 
 }
