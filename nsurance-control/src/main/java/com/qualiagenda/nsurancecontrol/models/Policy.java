@@ -1,6 +1,8 @@
 package com.qualiagenda.nsurancecontrol.models;
 
 import jakarta.persistence.*;
+
+import java.util.Date;
 @Entity
 @Table(name = "polices")
 public class Policy {
@@ -21,6 +23,9 @@ public class Policy {
     
     @Column(name = "policy_type")
     private String policyType;
+
+    @Column(name = "expiration_date")
+    private Date expirationDate;
 
     public Long getId() {
         return id;
@@ -51,5 +56,11 @@ public class Policy {
     }
     public void setPolicyType(String POLICYTYPE){
         this.policyType = POLICYTYPE;
+    }
+    public void setExpirationDate(Date exDate) {
+        this.expirationDate = exDate;
+    }
+    public Date getExpirDate(){
+        return expirationDate;
     }
 }
