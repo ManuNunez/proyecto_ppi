@@ -32,7 +32,7 @@
 
 <div class="container mt-4">
   <h2>Tabla de Pólizas</h2>
-  <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addPolicyModal">Agregar Póliza</button>
+  <a href="add_policy.html" class="btn btn-primary mb-3">Nueva Poliza</a>
   <table class="table" id="policyTable">
     <thead>
       <tr>
@@ -50,43 +50,6 @@
   </table>
 </div>
 
-<!-- Modal para agregar nueva póliza -->
-<div class="modal fade" id="addPolicyModal" tabindex="-1" role="dialog" aria-labelledby="addPolicyModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addPolicyModalLabel">Agregar Nueva Póliza</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form id="policyForm">
-          <div class="form-group">
-            <label for="policyNumber">Número de Póliza:</label>
-            <input type="text" class="form-control" id="policyNumber">
-          </div>
-          <div class="form-group">
-            <label for="insuredId">ID del Asegurado:</label>
-            <input type="text" class="form-control" id="insuredId">
-          </div>
-          <div class="form-group">
-            <label for="insuredVehicle">Vehículo Asegurado:</label>
-            <input type="text" class="form-control" id="insuredVehicle">
-          </div>
-          <div class="form-group">
-            <label for="policyType">Tipo de Póliza:</label>
-            <input type="text" class="form-control" id="policyType">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id="savePolicyButton">Registrar Póliza</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Bootstrap JS and dependencies -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

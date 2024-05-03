@@ -3,6 +3,8 @@ package com.qualiagenda.nsurancecontrol.controllers;
 
 import com.qualiagenda.nsurancecontrol.models.Insured;
 import com.qualiagenda.nsurancecontrol.services.InsuredService;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

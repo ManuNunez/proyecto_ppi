@@ -15,7 +15,7 @@ public class PolicyService {
 
     public Policy savePolicy(Policy policy){
         String policyNumber = policy.getPolicyNumber();
-        if (repository.findPolicyByPolicyNumber(policyNumber).isEmpty()){
+        if (repository.findPolicyByPolicyNumber(policyNumber).toString().equals("Optional[]")){
             return repository.save(policy);
         }
         else {

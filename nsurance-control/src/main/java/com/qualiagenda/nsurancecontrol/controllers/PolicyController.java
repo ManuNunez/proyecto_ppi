@@ -35,7 +35,7 @@ public class PolicyController {
         return service.editPolicy(policy);
     }
     @GetMapping()
-    public ArrayList<Policy> get() {
+    public ArrayList<Policy> getAllPolices() {
         return service.getAllPolicies();
     }
     

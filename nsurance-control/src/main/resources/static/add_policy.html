@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Póliza</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="insureds.html">Asegurados <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="polices.html">Pólizas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="help.html">Ayuda</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container mt-4">
+        <h2>Formulario de Póliza</h2>
+        <form id="policyForm">
+          <div class="form-group">
+            <label for="policyNumber">Número de Póliza:</label>
+            <input type="text" class="form-control" id="policyNumber">
+          </div>
+          <div class="form-group">
+            <label for="insuredOwner">Propietario:</label>
+            <select class="form-control" id="insuredOwner">
+              <!-- Options will be added dynamically from JavaScript -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="insuredVehicle">Vehículo Asegurado:</label>
+            <input type="text" class="form-control" id="insuredVehicle">
+          </div>
+          <div class="form-group">
+            <label for="policyType">Tipo de Póliza:</label>
+            <select class="form-control" id="policyType">
+              <option value="anual">Anual</option>
+              <option value="semestral">Semestral</option>
+              <option value="trimestral">Trimestral</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="expirationDate">Fecha de Expiración:</label>
+            <input type="date" class="form-control" id="expirationDate">
+          </div>
+          <button type="button" class="btn btn-primary" id="savePolicyButton">Registrar Póliza</button>
+        </form>
+      </div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script >
+
+    // Function to fetch insureds and populate the select options
+    function fetchInsuredsAndPopulateSelect() {
+        const apiUrl = "http://localhost:8080/insureds"; // Endpoint for fetching insureds
+
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(insureds => {
+                const insuredOwnerSelect = document.getElementById("insuredOwner");
+                insureds.forEach(insured => {
+                    const option = document.createElement("option");
+                    option.value = insured.id;
+                    option.textContent = insured.name;
+                    insuredOwnerSelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching insureds:', error);
+                // Handle error here
+            });
+    }
+        // Call the function to fetch insureds and populate the select options
+        fetchInsuredsAndPopulateSelect();
+
+
+
+
+    // Function to register a new policy
+   // Function to register a new policy
+function policyRegister() {
+  const formPolicyNumber = document.getElementById("policyNumber").value;
+  const formInsuredId = document.getElementById("insuredOwner").value; // Changed to get the selected insured ID
+  const formInsuredVehicle = document.getElementById("insuredVehicle").value;
+  const formPolicyType = document.getElementById("policyType").value;
+  const formDate = document.getElementById("expirationDate").value;
+
+  const newPolicy = {
+      policy_number: formPolicyNumber,
+      insured_id: formInsuredId,
+      insured_vehicle: formInsuredVehicle,
+      policy_type: formPolicyType,
+      expiration_dat: formDate
+  };
+
+  const apiUrl = "http://localhost:8080/polices"; // Assuming this is the correct API endpoint
+
+  // Configure the request
+  const requestOptions = {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newPolicy)
+  };
+
+  // Make the POST request
+  fetch(apiUrl, requestOptions)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+      })
+      .then(policyFromAPI => {
+          console.log('New policy created:', policyFromAPI);
+          // Clear the form fields
+          cleanFormFields();
+          alert("¡Póliza registrada con éxito!");
+      })
+      .catch(error => {
+          console.error('Error:', error);
+          // Handle error here
+      });
+}
+
+    // Function to clean form fields
+    function cleanFormFields() {
+        document.getElementById("policyNumber").value = "";
+        document.getElementById("insuredVehicle").value = "";
+        document.getElementById("policyType").value = "";
+    }
+
+    // Add event listener to the register button
+    const savePolicyButton = document.getElementById("savePolicyButton");
+    if (savePolicyButton) {
+        savePolicyButton.addEventListener("click", function () {
+            policyRegister();
+        });
+    } else {
+        console.error("No se encontró el botón de registro de póliza.");
+    }
+</script>
+</body>
+</html>
