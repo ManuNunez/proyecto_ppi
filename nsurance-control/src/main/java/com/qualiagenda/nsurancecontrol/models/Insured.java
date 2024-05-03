@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class Insured {
     
     @Id
+    @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     

@@ -15,7 +15,7 @@ public class InsuredService {
 
     public Insured saveInsured(Insured insured){
         String SearchName = insured.getName();
-        if (repository.findInsuredByName(SearchName).isEmpty()) {
+        if (repository.findInsuredByName(SearchName).toString().equals("Optional[[]]")) {
             return repository.save(insured);
         }
         else {

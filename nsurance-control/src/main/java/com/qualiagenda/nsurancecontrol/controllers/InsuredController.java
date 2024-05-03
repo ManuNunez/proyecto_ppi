@@ -24,7 +24,7 @@ public class InsuredController {
 
     @PostMapping()
     public Insured saveInsured(@RequestBody Insured insured) {
-        return saveInsured(insured);
+        return service.saveInsured(insured);
     }
     @PutMapping()
     public Insured editInsured(@RequestBody Insured entity) {
