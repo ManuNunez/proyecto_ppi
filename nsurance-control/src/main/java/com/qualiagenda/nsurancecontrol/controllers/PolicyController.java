@@ -4,7 +4,7 @@ package com.qualiagenda.nsurancecontrol.controllers;
 import com.qualiagenda.nsurancecontrol.models.Policy;
 import com.qualiagenda.nsurancecontrol.services.PolicyService;
 
-import org.hibernate.annotations.processing.Find;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,8 +43,8 @@ public class PolicyController {
     public Optional<Policy> findPolicyById(@PathVariable Long id) {
         return service.findPolicyById(id);
     }
-    @DeleteMapping()
-    public String deletePolicyById(@PathVariable Long id){
+    @DeleteMapping("/deletePolicyById")
+    public String deletePolicyById(@RequestParam Long id){
         return service.deletePolicyById(id);
     }
 }
