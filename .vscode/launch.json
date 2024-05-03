@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-QualiagendaApplication<nsurance-control>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.qualiagenda.nsurancecontrol.QualiagendaApplication",
+            "projectName": "nsurance-control",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
