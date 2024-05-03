@@ -2,7 +2,7 @@ package com.qualiagenda.nsurancecontrol.models;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name = "policies")
+@Table(name = "polices")
 public class Policy {
     
     @Id
